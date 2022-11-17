@@ -1,0 +1,34 @@
+<!-- <h1>{{service.userName}}, below are all of our tickets:</h1>
+<div *ngFor="let t of tickets; index as i">
+    <p> Ticket ID: {{t.id}} Issue: {{t.issue}} Opened By: {{t.openedBy}} Resolved By: {{t.resolvedBy}} Resolution: {{t.resolution}} Resolved? {{t.resolved}} Favorited? {{t.favorited}}</p>
+</div> -->
+
+<h1>GC Help Desk- Tickets: Welcome {{service.userName}}</h1>
+<table>
+    <tr>
+        <th>Ticket Id</th>
+        <th>Opened By</th>
+        <th>Issue</th>
+        <th>Resolved By</th>
+        <th>Resolution</th>
+        <th>Resolved</th>
+        <th>Favorited</th>
+    </tr>
+    <tr (click)="displayIssue(t)" *ngFor="let t of tickets; index as i">
+        <td>{{ t.id }}</td>
+        <td>{{ t.openedBy }}</td>
+        <td>{{ t.issue }}</td>
+        <td>{{ t.resolvedBy }}</td>
+        <td>{{ t.resolution }}</td>
+        <td>{{ t.resolved }}</td>
+        <td>{{ t.favorited }}</td>
+        <td><button (click)="removeTicket(t.id!)">Delete</button></td>
+        <td><button (click)="addFavorite(t)">Favorite</button></td>
+        <!-- <button (click)="Favorited(t)">Favorite</button> -->
+        <button onclick="t.resolved = true">Resolve</button>
+    </tr>
+</table>
+<hr>
+<p>Issue for selected ticket #{{ currentIndex}}: {{ currentIssue }}</p>
+<hr>
+<p>New issue:</p><input [(ngModel)]="newIssue"><button (click)="addTicket(newTicket)">Add Ticket</button>

@@ -1,0 +1,3 @@
+<h1>Welcome to the GC Helpdesk! Please enter your username below:</h1>
+<input [(ngModel)]="service.userName"><button [routerLink]="['/ticket']" [routerLinkActive]="['link-active']" (click)="login(service.userName)">Submit</button>
+

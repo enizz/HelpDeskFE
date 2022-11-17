@@ -1,0 +1,11 @@
+<h1>GC Help Desk: {{service.userName}}'s Favorite Tickets!</h1>
+<table>
+    <tr>
+        <th>Ticket Id</th>
+        <th>Favorited By</th>
+    </tr>
+    <tr *ngFor="let f of favTickets; index as i">
+        <td>{{ f.ticketid }}</td>
+        <td>{{ f.favoritedby }}</td>
+    </tr>
+</table>
