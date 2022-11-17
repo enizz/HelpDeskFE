@@ -10,10 +10,14 @@ import { Favorite } from './interfaces/Favorite';
 export class TicketService {
   backendURL: string = 'https://localhost:7127/api';
   userName: string = "";
+  tickets: Ticket[] = []
+  loadTickets = (): void => {
+    this.getTickets().subscribe((data: Ticket[]) => this.tickets = data);
+  }
 
   constructor(protected httpClient: HttpClient) { }
 
-  
+
 
   getTickets = (): Observable<Ticket[]> => {
     return this.httpClient.get<Ticket[]>(this.backendURL + "/Tickets")
@@ -27,13 +31,19 @@ export class TicketService {
   // }
   postTicket = (ticket: Ticket): Observable<Ticket> => {
     // return this.httpClient.post<Ticket>(`${this.backendURL}/Tickets`, ticket)
-    return this.httpClient.post<Ticket>(this.backendURL + "/Tickets", ticket)}
+    return this.httpClient.post<Ticket>(this.backendURL + "/Tickets/", ticket)}
 
   deleteTicket = (id: number): Observable<void> => {
     return this.httpClient.delete<void>(this.backendURL + "/Tickets/" + id)};
   
   postFavorite = (fav: Favorite): Observable<Favorite> => {
-    return this.httpClient.post<Favorite>(this.backendURL + "/Favorites", fav)
+    return this.httpClient.post<Favorite>(this.backendURL + "/Favorites/", fav)
   }
+  resolveTicket = (ticket: Ticket): Observable<Ticket> => {
+    return this.httpClient.put<Ticket>(this.backendURL + "/Tickets/", ticket)
+  }
+  deleteFav = (id: number): Observable<void> => {
+    return this.httpClient.delete<void>(this.backendURL + "/Favorites/" + id)}
+  
   }
 

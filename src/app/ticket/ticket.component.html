@@ -2,13 +2,13 @@
 <div *ngFor="let t of tickets; index as i">
     <p> Ticket ID: {{t.id}} Issue: {{t.issue}} Opened By: {{t.openedBy}} Resolved By: {{t.resolvedBy}} Resolution: {{t.resolution}} Resolved? {{t.resolved}} Favorited? {{t.favorited}}</p>
 </div> -->
-
-<h1>GC Help Desk- Tickets: Welcome {{service.userName}}</h1>
+<h1>Hello {{service.userName}}!</h1>
+<h1>GC Help Desk: Tickets</h1>
 <table>
     <tr>
         <th>Ticket Id</th>
         <th>Opened By</th>
-        <th>Issue</th>
+        <!-- <th>Issue</th> -->
         <th>Resolved By</th>
         <th>Resolution</th>
         <th>Resolved</th>
@@ -17,15 +17,15 @@
     <tr (click)="displayIssue(t)" *ngFor="let t of tickets; index as i">
         <td>{{ t.id }}</td>
         <td>{{ t.openedBy }}</td>
-        <td>{{ t.issue }}</td>
+        <!-- <td>{{ t.issue }}</td> -->
         <td>{{ t.resolvedBy }}</td>
         <td>{{ t.resolution }}</td>
         <td>{{ t.resolved }}</td>
         <td>{{ t.favorited }}</td>
         <td><button (click)="removeTicket(t.id!)">Delete</button></td>
         <td><button (click)="addFavorite(t)">Favorite</button></td>
-        <!-- <button (click)="Favorited(t)">Favorite</button> -->
-        <button onclick="t.resolved = true">Resolve</button>
+        <input [(ngModel)]="resolution"><button (click)="addResolution(t)">Add Resolution</button>
+        <!-- <td><button onclick="t.resolved = true">Resolve</button></td> -->
     </tr>
 </table>
 <hr>

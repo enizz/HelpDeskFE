@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Favorite } from '../interfaces/Favorite';
 import { TicketService } from '../ticket.service';
+import { Ticket } from '../interfaces/Ticket';
 
 @Component({
   selector: 'app-favorite',
@@ -19,5 +20,8 @@ export class FavoriteComponent implements OnInit {
 
   loadFavTickets = (): void => {
     this.service.getFavTickets().subscribe((data: Favorite[]) => this.favTickets = data);
+  }
+  removeFav = (id: number): void => {
+    this.service.deleteFav(id).subscribe(() => this.loadFavTickets())
   }
 }

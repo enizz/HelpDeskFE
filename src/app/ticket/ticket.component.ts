@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoriteComponent } from '../favorite/favorite.component';
+import { tick } from '@angular/core/testing';
 import { Favorite } from '../interfaces/Favorite';
 import { Ticket } from '../interfaces/Ticket';
 import { TicketService } from '../ticket.service';
@@ -10,10 +10,14 @@ import { TicketService } from '../ticket.service';
   styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent implements OnInit {
-  tickets: Ticket[] = [];
+  tickets = this.service.tickets
 
   constructor(protected service: TicketService) { }
-
+  openedBy2: string = "";
+  issue2: string = "";
+  resolved2: boolean = false;
+  favorited2: boolean = false;
+  resolution: string = "";
   newIssue: string = "";
   currentIssue: string = ""; 
   currentIndex: any
@@ -51,5 +55,13 @@ export class TicketComponent implements OnInit {
   addFavorite = (ticket: Ticket): void => {
     this.newFav = {favoritedby: this.service.userName, ticketid: ticket.id!}
     this.service.postFavorite(this.newFav).subscribe(()=> this.loadTickets())
+  }
+  addResolution = (ticket: Ticket): void => {
+    this.openedBy2 = ticket.openedBy
+    this.issue2 = ticket.issue
+    this.resolved2 = true;
+    this.favorited2 = ticket.favorited;
+    ticket = {openedBy: this.openedBy2, issue: this.issue2, resolvedBy: this.service.userName, resolution: this.resolution, resolved: this.resolved2, favorited: this.favorited2}
+    this.service.resolveTicket(ticket).subscribe(() => this.loadTickets())
   }
 }
