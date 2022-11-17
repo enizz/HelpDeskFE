@@ -19,7 +19,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   loadFavTickets = (): void => {
-    this.service.GetFavorites().subscribe((data: Favorite[]) => this.favTickets = data);
+    this.service.GetFavorites().subscribe((data: Favorite[]) => this.service.favTickets = data);
   }
   removeFav = (id: number): void => {
     this.service.deleteFav(id).subscribe(() => this.loadFavTickets())

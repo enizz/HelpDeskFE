@@ -8,10 +8,10 @@
         <td>this is where the ID should be {{ f.favoritedby }}</td>
         <td>{{ favTickets.length }}</td>
     </tr> -->
-    <tr *ngFor="let fav of favTickets; index as i">
-        <td>{{fav.ticketid}}</td>
-        <td>{{fav.favoritedby}}</td>
-        <td><button (click)="removeFav(fav.ticketid)">Delete</button></td>
+    <tr *ngFor="let f of favTickets; index as i">
+        <td>{{f.ticketid}}</td>
+        <td>{{f.favoritedby}}</td>
+        <td><button (click)="removeFav(f.ticketid)">Delete</button></td>
     </tr>
 
 </table>

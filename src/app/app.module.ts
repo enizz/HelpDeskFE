@@ -9,7 +9,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AddTicketComponent } from './add-ticket/add-ticket.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { AddTicketComponent } from './add-ticket/add-ticket.component';
     TicketComponent,
     FavoriteComponent,
     NavMenuComponent,
-    AddTicketComponent
+  
   ],
   imports: [
     BrowserModule,
