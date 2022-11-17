@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { tick } from '@angular/core/testing';
 import { Favorite } from '../interfaces/Favorite';
 import { Ticket } from '../interfaces/Ticket';
 import { TicketService } from '../ticket.service';
@@ -53,15 +52,15 @@ export class TicketComponent implements OnInit {
     this.currentIndex = t.id
   }
   addFavorite = (ticket: Ticket): void => {
-    this.newFav = {favoritedby: this.service.userName, ticketid: ticket.id!}
-    this.service.postFavorite(this.newFav).subscribe(()=> this.loadTickets())
+    ticket.favorited = true;
+    this.service.putTicket(ticket.id!, ticket).subscribe(()=> this.loadTickets())
+    let newFav: Favorite = {favoritedby: this.service.userName, ticketid: ticket.id!}
+    this.service.postFavorite(newFav).subscribe(()=> this.loadTickets())
   }
   addResolution = (ticket: Ticket): void => {
-    this.openedBy2 = ticket.openedBy
-    this.issue2 = ticket.issue
-    this.resolved2 = true;
-    this.favorited2 = ticket.favorited;
-    ticket = {openedBy: this.openedBy2, issue: this.issue2, resolvedBy: this.service.userName, resolution: this.resolution, resolved: this.resolved2, favorited: this.favorited2}
-    this.service.resolveTicket(ticket).subscribe(() => this.loadTickets())
+    ticket.resolved = true;
+    ticket.resolution = this.resolution
+    this.service.putTicket(ticket.id!, ticket).subscribe(()=> this.loadTickets())
+    //this.service.resolveTicket(ticket).subscribe(() => this.loadTickets())
   }
 }
