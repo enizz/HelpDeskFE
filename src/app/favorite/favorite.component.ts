@@ -10,7 +10,7 @@ import { Ticket } from '../interfaces/Ticket';
 })
 export class FavoriteComponent implements OnInit {
 
-  favTickets = this.service.favTickets
+  favorites = this.service.favorites
 
   constructor(protected service: TicketService) { }
 
@@ -19,9 +19,9 @@ export class FavoriteComponent implements OnInit {
   }
 
   loadFavTickets = (): void => {
-    this.service.GetFavorites().subscribe((data: Favorite[]) => this.service.favTickets = data);
+    this.service.GetFavorites().subscribe((data: Favorite[]) => this.service.favorites = data);
   }
   removeFav = (id: number): void => {
-    this.service.deleteFav(id).subscribe(() => this.loadFavTickets())
+    this.service.deleteFav(id).subscribe(() => this.loadFavTickets());
   }
 }

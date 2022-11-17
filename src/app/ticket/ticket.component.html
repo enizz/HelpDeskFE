@@ -1,6 +1,8 @@
-
+<html>
+    <hr>
 <h1>Hello {{service.userName}}!</h1>
 <h1>GC Help Desk: Tickets</h1>
+<hr>
 <table>
     <tr>
         <th>Ticket Id</th>
@@ -26,6 +28,19 @@
     </tr>
 </table>
 <hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <p>Issue for selected ticket #{{ currentIndex}}: {{ currentIssue }}</p>
 <hr>
 <p>New issue:</p><input [(ngModel)]="newIssue"><button (click)="addTicket(newTicket)">Add Ticket</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</html>

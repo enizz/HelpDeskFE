@@ -1,3 +1,31 @@
 span {
     padding: .5rem;
 }
+th, table {
+    border: 1px solid;
+    background-color: aqua;
+    font-weight: bolder;
+  }
+td {
+    border: 1px solid;
+    background-color: lightblue;
+    font-weight: bold;
+}
+tr {
+}
+header {
+    background-color: lightgray;
+}
+h1 {
+    background-color: lightgray;
+    color: blue;
+}
+html {
+    background-color: lightgray;
+}
+p {
+    font-weight: bolder;
+}
+body {
+    background-color: lightgray;
+}

@@ -11,12 +11,12 @@ export class TicketService {
   backendURL: string = 'https://localhost:7127/api';
   userName: string = "";
   tickets: Ticket[] = [];
-  favTickets: Favorite[] = [];
+  favorites: Favorite[] = [];
   loadTickets = (): void => {
     this.getTickets().subscribe((data: Ticket[]) => this.tickets = data);
   }
   loadFavTickets = (): void => {
-    this.GetFavorites().subscribe((data: Favorite[]) => this.favTickets = data);
+    this.GetFavorites().subscribe((data: Favorite[]) => this.favorites = data);
   }
   constructor(protected httpClient: HttpClient) { }
 
@@ -43,6 +43,7 @@ export class TicketService {
   }
   deleteFav = (id: number): Observable<void> => {
     return this.httpClient.delete<void>(this.backendURL + "/Favorites/" + id)}
+  
   putTicket = (id: number, ticket: Ticket): Observable<Ticket> => {
     return this.httpClient.put<Ticket>(this.backendURL + "/Tickets/"+ id, ticket)}
   }

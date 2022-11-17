@@ -29,8 +29,8 @@ export class TicketComponent implements OnInit {
     favorited: false
   }
   newFav: Favorite = {
-    ticketid: 0,
-    favoritedby: ""
+    ticketId: 0,
+    favoritedBy: ""
   }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class TicketComponent implements OnInit {
   addFavorite = (ticket: Ticket): void => {
     ticket.favorited = true;
     this.service.putTicket(ticket.id!, ticket).subscribe(()=> this.loadTickets())
-    let newFav: Favorite = {favoritedby: this.service.userName, ticketid: ticket.id!}
+    let newFav: Favorite = {favoritedBy: this.service.userName, ticketId: ticket.id!}
     this.service.postFavorite(newFav).subscribe(()=> this.loadTickets())
   }
   addResolution = (ticket: Ticket): void => {

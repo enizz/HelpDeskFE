@@ -1,4 +1,6 @@
+<html>
 <h1>GC Help Desk: Favorite Tickets!</h1>
+<hr>
 <table>
     <tr>
         <th>Ticket Id</th>
@@ -8,10 +10,17 @@
         <td>this is where the ID should be {{ f.favoritedby }}</td>
         <td>{{ favTickets.length }}</td>
     </tr> -->
-    <tr *ngFor="let f of favTickets; index as i">
-        <td>{{f.ticketid}}</td>
-        <td>{{f.favoritedby}}</td>
-        <td><button (click)="removeFav(f.ticketid)">Delete</button></td>
+    <tr *ngFor="let f of favorites; index as i">
+        <td>{{f.ticketId}}</td>
+        <td>{{f.favoritedBy}}</td>
+        <td><button (click)="removeFav(f.id!)">Delete</button></td>
     </tr>
-
 </table>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</html>
